@@ -3,12 +3,8 @@ var kembalian, jenis, lembar : longint; //deklarasi variabel,untuk lembar sebena
 begin // mulai
   clrscr; // clear screen atau membersihkan layar agar tampilan lebih baik
   readln(kembalian); // user menginput kembalian
-   if (kembalian >= 225000) and (kembalian < 230000) then // kondisi ini diperlukan karena jika kita analisis ada perilaku yang unik dalam rentang tersebut jika tidak ada ini, maka ketika diinput 225000 hasilnya adalah 4, padahal hasil sebenarnya adalah 3, 
-    begin //ini terjadi karena program membaca 100000 x 2, 20000 x1 dan 5000 x 1 sehingga totalnya 4 lembar, padahal seharusnya 75000 x 3 atau 100000 x 1, 75000 x1 dan 50000 x 1, perilaku ini berlaku hingga 229999
-     lembar := 3; //inisialisasi nilai lembar menjadi 3 ketika kondisi di atas memenuhi
-     kembalian := kembalian - 225000; // mengurangi kembalian dengan 225000 agar bisa kompatibel dengan alur selanjutnya jika kondisi di atas memenuhi
-    end; // akhir dari kondisi di atas
      jenis := 100000; //inisialisasi nilai jenis menjadi 100000
+   if (kembalian >= 225000) and (kembalian < 230000) then jenis := 75000; // Inisialisasi jenis menjadi 75000 jika kondisi Ini memenuhi, kondisi ini diperlukan karena jika kita analisis ada perilaku yang unik dalam rentang tersebut jika tidak ada ini, maka ketika diinput 225000 hasilnya adalah 4, padahal hasil sebenarnya adalah 3, ini terjadi karena program membaca 100000 x 2, 20000 x1 dan 5000 x 1 sehingga totalnya 4 lembar, padahal seharusnya 75000 x 3 atau 100000 x 1, 75000 x1 dan 50000 x 1, perilaku ini berlaku hingga 229999
       repeat // memulai perulangan utama untuk menentukan banyaknya lembar kembalian
       lembar := lembar + (kembalian div jenis); // proses untuk mendapatkan banyaknya lembar kembalian
       kembalian := kembalian mod jenis; // sisa bagi ketika kembalian dibagi oleh jenis harga tertentu
